@@ -25,20 +25,21 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        String token = getToken(request);
+        if(request.getHeader("Authorization")!= null) {
+            String token = getToken(request);
 
-        if(jwtUtil.isTokenExpired(token)){
-            throw new RuntimeException("Token is expired");
+            if (jwtUtil.isTokenExpired(token)) {
+                throw new RuntimeException("Token is expired");
+            }
+            UserDetailsImpl userDetails = UserDetailsImpl.builder()
+                    .id(jwtUtil.extractClaim(token, claims -> claims.get("id", Long.class)))
+                    .email(jwtUtil.extractClaim(token, Claims::getSubject))
+                    .position(jwtUtil.extractClaim(token, claims -> claims.get("position", String.class)))
+                    .build();
+
+            Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getUsername(), userDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
         }
-        UserDetailsImpl userDetails = UserDetailsImpl.builder()
-                .id(jwtUtil.extractClaim(token, claims -> claims.get("id", Long.class)))
-                .email(jwtUtil.extractClaim(token, Claims::getSubject))
-                .role(jwtUtil.extractClaim(token, claims -> claims.get("role", String.class)))
-                        .build();
-
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
         filterChain.doFilter(request, response);
     }
 

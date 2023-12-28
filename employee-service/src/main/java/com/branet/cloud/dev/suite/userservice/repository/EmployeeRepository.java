@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     List<Employee> findAllByProjectsContaining(Long projectId);
-    @Query(value = "SELECT * FROM employee_service WHERE email = :email LIMIT 1",
+    @Query(value = "SELECT * FROM employees WHERE email = :email LIMIT 1",
     nativeQuery = true)
     Optional<Employee> findByEmail(@Param("email") String email);
 }

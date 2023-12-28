@@ -32,8 +32,12 @@ public class AuthServiceImpl {
         UserDetailsImpl userDetails = employeeClient.getByEmail(loginRequest.email());
         Map<String, Object> extraClaims = new HashMap<>();
         extraClaims.put("id", userDetails.getId());
-        extraClaims.put("role", userDetails.getAuthorities());
-        String token = jwtUtil.generateToken(extraClaims, userDetails.getUsername());
+        extraClaims.put("role",
+                userDetails.getAuthorities().stream()
+                        .findFirst()
+                        .get()
+                        .getAuthority());
+        String token = jwtUtil.generateToken(extraClaims, userDetails.getEmail());
         return new LoginResponse(token, token);
     }
 }

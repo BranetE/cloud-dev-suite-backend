@@ -11,44 +11,45 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/project")
 @RequiredArgsConstructor
 public class ProjectController {
     private final ProjectService projectService;
 
-    @GetMapping("/project")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Project> getAll(){
         return projectService.getAll();
     }
 
-    @GetMapping("/project/employee/{employeeId}")
+    @GetMapping("/getByEmployee/{employeeId}")
     @PreAuthorize("hasAuthority('MANAGER') or principal.id = #employeeId")
     @ResponseStatus(HttpStatus.OK)
     public List<Project> getAllByEmployeeId(@PathVariable("employeeId") Long employeeId){
         return projectService.getAllProjectsByEmployee(employeeId);
     }
 
-    @PostMapping("/project")
+    @PostMapping
     @PreAuthorize("hasAuthority('MANAGER')")
     @ResponseStatus(HttpStatus.OK)
     public Project createProject(@RequestBody CreateProjectRequest createProjectRequest){
         return projectService.createProject(createProjectRequest);
     }
 
-    @GetMapping("/project/{projectId}")
+    @GetMapping("/{projectId}")
     @ResponseStatus(HttpStatus.OK)
     public Project getProject(@PathVariable Long projectId){
         return projectService.getProject(projectId);
     }
 
-    @PatchMapping("/{projectId}/addEmployee{employeeId}")
+    @PatchMapping("/{projectId}/addEmployee/{employeeId}")
     @PreAuthorize("hasAuthority('TEAM_LEAD')")
     @ResponseStatus(HttpStatus.OK)
     public void addEmployee(@PathVariable("projectId") Long projectId, @PathVariable("employeeId") Long employeeId){
         projectService.addEmployeeToProject(projectId, employeeId);
     }
 
-    @PatchMapping("/{projectId}/removeEmployee{employeeId}")
+    @PatchMapping("/{projectId}/removeEmployee/{employeeId}")
     @PreAuthorize("hasAuthority('TEAM_LEAD')")
     @ResponseStatus(HttpStatus.OK)
     public void removeEmployee(@PathVariable("projectId") Long projectId, @PathVariable("employeeId") Long employeeId){
@@ -62,7 +63,7 @@ public class ProjectController {
         projectService.changeStatus(projectId, status);
     }
 
-    @PatchMapping("/changeResponsibleEmployee/{projectId}")
+    @PatchMapping("/changeTeamLead/{projectId}")
     @PreAuthorize("hasAuthority('MANAGER')")
     @ResponseStatus(HttpStatus.OK)
     public void changeResponsibleEmployee(@PathVariable Long projectId, @RequestParam("employeeId") Long responsibleEmployeeId){

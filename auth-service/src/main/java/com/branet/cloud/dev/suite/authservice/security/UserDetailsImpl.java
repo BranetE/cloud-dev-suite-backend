@@ -1,23 +1,27 @@
 package com.branet.cloud.dev.suite.authservice.security;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
+@Setter
+@Getter
 public class UserDetailsImpl implements UserDetails {
     @Getter
     private Long id;
-    private List<SimpleGrantedAuthority> authorities;
+    private String position;
     private String password;
-    private String username;
+    private String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return Collections.singletonList(new SimpleGrantedAuthority(position));
     }
 
     @Override
@@ -27,7 +31,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override

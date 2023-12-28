@@ -26,3 +26,4 @@ spring:
           uri: lb://sprint-service
           predicates:
             - Path=/sprint/**
+            - Path=/task/**

@@ -1,0 +1,3 @@
+rootProject.name = "cloud-dev-suite-backend"
+
+include 'api-gateway', 'auth-service', 'config-server', 'employee-service', 'project-service', 'service-registry', 'shift-service', 'sprint-service'

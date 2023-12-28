@@ -28,12 +28,6 @@ public class JwtUtil{
         this.expiration = expiration;
     }
 
-    public boolean isTokenValid(String token, UserDetails userDetails) {
-        String email = extractClaim(token, Claims::getSubject);
-        return (email.equals(userDetails.getUsername())) && !isTokenExpired(token);
-
-    }
-
     public String generateToken(Map<String, Object> extraClaims, String username) {
         return Jwts.builder()
                 .claims(extraClaims)
@@ -43,23 +37,6 @@ public class JwtUtil{
                 .signWith(getSigningKey()).compact();
 
 
-    }
-
-    private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                .verifyWith(getSigningKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
-    }
-
-    private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
-        Claims claims = extractAllClaims(token);
-        return claimResolver.apply(claims);
-    }
-
-    private boolean isTokenExpired(String token){
-        return extractClaim(token, Claims::getExpiration).before(new Date());
     }
 
     private SecretKey getSigningKey(){

@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cloud-dev-suite.iml" filepath="$PROJECT_DIR$/.idea/cloud-dev-suite.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/employee-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/employee-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/project-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/project-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-registry.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-registry.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shift-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shift-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sprint-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sprint-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth-service/cloud-dev-suite-backend.auth-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth-service/cloud-dev-suite-backend.auth-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/employee-service/cloud-dev-suite-backend.employee-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/employee-service/cloud-dev-suite-backend.employee-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/project-service/cloud-dev-suite-backend.project-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/project-service/cloud-dev-suite-backend.project-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-registry/cloud-dev-suite-backend.service-registry.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-registry/cloud-dev-suite-backend.service-registry.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shift-service/cloud-dev-suite-backend.shift-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shift-service/cloud-dev-suite-backend.shift-service.main.iml" />
     </modules>
   </component>
 </project>

@@ -20,7 +20,7 @@ public class ShiftService {
     private final ShiftRepository shiftRepository;
 
     public Shift createNewShiftForEmployee(AddShiftRequest addShiftRequest, Long employeeId){
-        if(shiftRepository.findCurrentShift(employeeId).isEmpty()) {
+        if(shiftRepository.findCurrentShift(employeeId).isPresent()) {
             throw new EntityExistsException();
         }
 

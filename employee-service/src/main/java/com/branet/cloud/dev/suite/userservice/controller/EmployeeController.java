@@ -10,59 +10,60 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/employee")
 @RequiredArgsConstructor
 public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    @GetMapping("/employee")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Employee> getAllByProjectId(){
         return employeeService.getAll();
     }
 
-    @GetMapping("/employee/project/{projectId}")
+    @GetMapping("/project/{projectId}")
     @ResponseStatus(HttpStatus.OK)
     public List<Employee> getAllByProjectId(@PathVariable("projectId") Long projectId){
         return employeeService.getAllByProjectId(projectId);
     }
 
-    @PostMapping("/employee")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Employee createEmployee(@RequestBody CreateEmployeeRequest createEmployeeRequest){
         return employeeService.createEmployee(createEmployeeRequest);
     }
 
-    @GetMapping("/employee/{employeeId}")
+    @GetMapping("/{employeeId}")
     @ResponseStatus(HttpStatus.OK)
     public Employee getEmployeeById(@PathVariable Long employeeId){
         return employeeService.getEmployee(employeeId);
     }
-    @PatchMapping("/employee/{employeeId}/addProject")
+    @PatchMapping("/{employeeId}/addProject")
     @ResponseStatus(HttpStatus.OK)
     public void addProjectToEmployee(@PathVariable Long employeeId, @RequestParam Long projectId){
         employeeService.addProjectToEmployee(employeeId, projectId);
     }
 
-    @PatchMapping("/employee/{employeeId}/removeProject")
+    @PatchMapping("/{employeeId}/removeProject")
     @ResponseStatus(HttpStatus.OK)
     public void removeProjectFromEmployee(@PathVariable Long employeeId, @RequestParam Long projectId) {
         employeeService.removeProjectFromEmployee(employeeId, projectId);
     }
 
-    @GetMapping("/employee/getByEmail")
+    @GetMapping("/getByEmail")
     @ResponseStatus(HttpStatus.OK)
     public Employee getByEmail(@RequestParam String email){
         return employeeService.getEmployee(email);
     }
 
-    @PutMapping("/employee")
+    @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public Employee updateEmployee(@RequestBody CreateEmployeeRequest createEmployeeRequest, @PathVariable Long employeeId){
         return employeeService.updateEmployee(createEmployeeRequest, employeeId);
     }
 
-    @DeleteMapping("/employee")
+    @DeleteMapping
     @ResponseStatus(HttpStatus.OK)
     public void deleteEmployee(@PathVariable Long employeeId){
         employeeService.deleteEmployee(employeeId);

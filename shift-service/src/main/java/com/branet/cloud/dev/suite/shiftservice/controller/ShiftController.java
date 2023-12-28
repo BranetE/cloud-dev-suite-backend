@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/shift")
 @RequiredArgsConstructor
 public class ShiftController {
     private final ShiftService shiftService;
@@ -21,13 +22,13 @@ public class ShiftController {
         return shiftService.getCurrentShiftByEmployeeId(employee.getId());
     }
 
-    @PostMapping("/startShift")
+    @PostMapping("/start")
     @ResponseStatus(HttpStatus.CREATED)
     public Shift startNewShiftForEmployee(@AuthenticationPrincipal UserDetailsImpl employee, @RequestBody AddShiftRequest addShiftRequest){
         return shiftService.createNewShiftForEmployee(addShiftRequest, employee.getId());
     }
 
-    @PatchMapping("/endShift/{employeeId}")
+    @PatchMapping("/end/{employeeId}")
     @PreAuthorize("principal.id = #employeeId or hasAuthority('TEAM_LEAD')")
     @ResponseStatus(HttpStatus.OK)
     public void endShiftForEmployee(@PathVariable("employeeId") Long employeeId) {
