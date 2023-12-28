@@ -15,12 +15,12 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     List<Project> findAllByEmployeesContains(Long employeeId);
     @Modifying
-    @Query(value = "UPDATE projects AS p SET p.status=:status WHERE p.id=:projectId",
+    @Query(value = "UPDATE projects SET status=:status WHERE id=:projectId",
             nativeQuery = true)
-    void updateProjectStatus(@Param("projectId") Long projectId, @Param("status") ProjectStatus status);
+    void updateProjectStatus(@Param("projectId") Long projectId, @Param("status") String status);
 
     @Modifying
-    @Query(value = "UPDATE projects AS p SET p.responsibleEmployeeId=:employeeId WHERE p.id=:projectId",
+    @Query(value = "UPDATE projects SET responsible_employee_id=:employeeId WHERE id=:projectId",
             nativeQuery = true)
     void updateResponsibleEmployeeId(@Param("projectId") Long projectId, @Param("employeeId") Long employeeId);
 }

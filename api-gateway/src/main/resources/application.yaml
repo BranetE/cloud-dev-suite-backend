@@ -7,23 +7,23 @@ spring:
     gateway:
       routes:
         - id: auth-service
-          uri: lb://auth-service
+          uri: ${AUTH_ROUTE_URI:http://localhost:8040}
           predicates:
             - Path=/auth/**
         - id: employee-service
-          uri: lb://employee-service
+          uri: ${EMPLOYEE_ROUTE_URI:http://localhost:8050}
           predicates:
             - Path=/employee/**
         - id: project-service
-          uri: lb://project-service
+          uri: ${PROJECT_ROUTE_URI:http://localhost:8060}
           predicates:
             - Path=/project/**
         - id: shift-service
-          uri: lb://shift-service
+          uri: ${SHIFT_ROUTE_URI:http://localhost:8070}
           predicates:
             - Path=/shift/**
         - id: sprint-service
-          uri: lb://sprint-service
+          uri: ${SPRINT_ROUTE_URI:http://localhost:8080}
           predicates:
             - Path=/sprint/**
             - Path=/task/**

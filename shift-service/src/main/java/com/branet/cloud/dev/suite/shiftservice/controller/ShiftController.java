@@ -10,6 +10,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/shift")
 @RequiredArgsConstructor
@@ -22,6 +24,13 @@ public class ShiftController {
         return shiftService.getCurrentShiftByEmployeeId(employee.getId());
     }
 
+    @GetMapping("/getAllByEmployee/{employeeId}")
+    @PreAuthorize("authentication.principal.id == #employeeId or hasAuthority('TEAM_LEAD')")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Shift> getAllShiftsByEmployee(@PathVariable Long employeeId){
+        return shiftService.getAllShiftsByEmployee(employeeId);
+    }
+
     @PostMapping("/start")
     @ResponseStatus(HttpStatus.CREATED)
     public Shift startNewShiftForEmployee(@AuthenticationPrincipal UserDetailsImpl employee, @RequestBody AddShiftRequest addShiftRequest){
@@ -29,7 +38,7 @@ public class ShiftController {
     }
 
     @PatchMapping("/end/{employeeId}")
-    @PreAuthorize("principal.id = #employeeId or hasAuthority('TEAM_LEAD')")
+    @PreAuthorize("authentication.principal.id == #employeeId or hasAuthority('TEAM_LEAD')")
     @ResponseStatus(HttpStatus.OK)
     public void endShiftForEmployee(@PathVariable("employeeId") Long employeeId) {
         shiftService.finishCurrentShift(employeeId);

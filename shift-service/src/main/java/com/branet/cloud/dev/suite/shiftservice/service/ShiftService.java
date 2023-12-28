@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Transactional
@@ -27,9 +28,13 @@ public class ShiftService {
         Shift shift = new Shift();
         shift.setEmployeeId(employeeId);
         shift.setShiftType(ShiftType.valueOf(addShiftRequest.shiftType()));
-        shift.setStartTime(addShiftRequest.startTime());
+        shift.setStartTime(LocalDateTime.now());
 
         return shiftRepository.save(shift);
+    }
+
+    public List<Shift> getAllShiftsByEmployee(Long employeeId){
+        return shiftRepository.findAllByEmployeeId(employeeId);
     }
 
     public Shift getCurrentShiftByEmployeeId(Long employeeId){

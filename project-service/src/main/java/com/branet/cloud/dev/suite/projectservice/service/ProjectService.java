@@ -59,8 +59,9 @@ public class ProjectService {
 
     public void changeStatus(Long projectId, String status){
         Project project = projectRepository.findById(projectId).orElseThrow(() -> new EntityNotFoundException());
+        ProjectStatus.valueOf(status);
         if (!project.getStatus().equals(ProjectStatus.FINISHED)){
-            projectRepository.updateProjectStatus(projectId, ProjectStatus.valueOf(status));
+            projectRepository.updateProjectStatus(projectId, status);
         }
     }
 

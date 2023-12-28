@@ -4,6 +4,7 @@ import com.branet.cloud.dev.suite.userservice.dto.CreateEmployeeRequest;
 import com.branet.cloud.dev.suite.userservice.dto.mapper.EmployeeMapper;
 import com.branet.cloud.dev.suite.userservice.model.Employee;
 import com.branet.cloud.dev.suite.userservice.repository.EmployeeRepository;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,10 @@ public class EmployeeService {
 
     public Employee getEmployee(Long employeeId){
         return employeeRepository.findById(employeeId).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public List<Employee> getByPositionAndExperience(String position, String experience){
+        return employeeRepository.findByPositionAndExperience(position, experience);
     }
 
     public Employee getEmployee(String email) {

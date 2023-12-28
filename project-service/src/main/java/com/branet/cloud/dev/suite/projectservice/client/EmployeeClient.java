@@ -1,14 +1,14 @@
 package com.branet.cloud.dev.suite.projectservice.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "employeeClient")
+@FeignClient(name = "employee-service", url = "http://localhost:8060")
 public interface EmployeeClient {
-    @PatchMapping("/employee/{employeeId}/addProject")
+    @PutMapping("/employee/{employeeId}/addProject")
     void addProjectToEmployee(@PathVariable Long employeeId, @RequestParam Long projectId);
-    @PatchMapping("/employee/{employeeId}/removeProject")
+    @PutMapping("/employee/{employeeId}/removeProject")
     void removeProjectFromEmployee(@PathVariable Long employeeId, @RequestParam Long projectId);
 }

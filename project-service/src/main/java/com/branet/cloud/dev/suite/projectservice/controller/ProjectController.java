@@ -23,7 +23,7 @@ public class ProjectController {
     }
 
     @GetMapping("/getByEmployee/{employeeId}")
-    @PreAuthorize("hasAuthority('MANAGER') or principal.id = #employeeId")
+    @PreAuthorize("hasAuthority('MANAGER') or authentication.principal.id == #employeeId")
     @ResponseStatus(HttpStatus.OK)
     public List<Project> getAllByEmployeeId(@PathVariable("employeeId") Long employeeId){
         return projectService.getAllProjectsByEmployee(employeeId);
@@ -66,7 +66,7 @@ public class ProjectController {
     @PatchMapping("/changeTeamLead/{projectId}")
     @PreAuthorize("hasAuthority('MANAGER')")
     @ResponseStatus(HttpStatus.OK)
-    public void changeResponsibleEmployee(@PathVariable Long projectId, @RequestParam("employeeId") Long responsibleEmployeeId){
+    public void changeTeamLead(@PathVariable Long projectId, @RequestParam("employeeId") Long responsibleEmployeeId){
         projectService.changeResponsibleEmployee(projectId, responsibleEmployeeId);
     }
 }

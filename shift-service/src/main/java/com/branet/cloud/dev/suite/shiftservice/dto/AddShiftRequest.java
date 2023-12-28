@@ -8,6 +8,5 @@ import java.time.LocalDateTime;
  * DTO for {@link Shift}
  */
 public record AddShiftRequest(
-        LocalDateTime startTime,
         String shiftType) {
 }

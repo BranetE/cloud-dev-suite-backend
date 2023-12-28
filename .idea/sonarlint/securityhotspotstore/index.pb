@@ -103,12 +103,6 @@ Wauth-service/src/main/java/com/branet/cloud/dev/suite/authservice/dto/LoginRequ
 Xauth-service/src/main/java/com/branet/cloud/dev/suite/authservice/dto/LoginResponse.java,2\f\2f99f3aefd4c6fee217d340146a01d484cb945e4
 ê
 `auth-service/src/main/java/com/branet/cloud/dev/suite/authservice/controller/AuthController.java,3\f\3fdea190707424c47763b6d981bea0c54f8b3708
-ì
-cemployee-service/src/main/java/com/branet/cloud/dev/suite/userservice/security/UserDetailsImpl.java,c\a\ca72bb70ce3defde049924e12468341c0e219e2e
-é
-^employee-service/src/main/java/com/branet/cloud/dev/suite/userservice/security/JwtService.java,6\f\6f239fd5270abf4da6781c451e65ddb96991c505
-ç
-]employee-service/src/main/java/com/branet/cloud/dev/suite/userservice/security/JwtFilter.java,2\c\2c5190d94141e65256a54de2f0c96648497535f2
 Ñ
 Tapi-gateway/src/main/java/com/branet/cloud/dev/suite/apigateway/dto/EmployeeDto.java,a\9\a9e5b791dab7ed0f68df83f705974922661d6cde
 ó
@@ -171,3 +165,7 @@ X
 fshift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/security/util/UserDetailsImpl.java,1\0\1000a4ed4bc8ff99368bc86dd3173baf424267e5
 ì
 cshift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/repository/ShiftRepository.java,0\7\07351e28db07f6df2ebe4dc492ffbc41d7218d99
+å
+\shift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/dto/AddShiftRequest.java,d\4\d46f17a08c91de359473bad60701fe3ccb97e2c3
+ê
+`project-service/src/main/java/com/branet/cloud/dev/suite/projectservice/model/ProjectStatus.java,d\d\dd8755d417933cccaa479e91b707f268bc855066

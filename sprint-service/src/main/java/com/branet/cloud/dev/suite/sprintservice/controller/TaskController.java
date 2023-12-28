@@ -43,7 +43,7 @@ public class TaskController {
         return taskService.finishTask(taskId, employeeId, finishTaskRequest);
     }
 
-    @GetMapping("/open/getBySprint/{sprintId}")
+    @GetMapping("/getBySprint/{sprintId}/open")
     @ResponseStatus(HttpStatus.OK)
     public List<Task> getAllOpenTasksBySprintId(@PathVariable Long sprintId,
                                                 @RequestParam(defaultValue = "0") int page,
@@ -52,7 +52,7 @@ public class TaskController {
     }
 
     @GetMapping("/getByEmployee/{employeeId}")
-    @PreAuthorize("hasAuthority('TEAM_LEAD') or principal.id = #employeeId")
+    @PreAuthorize("hasAuthority('TEAM_LEAD') or authentication.principal.id == #employeeId")
     @ResponseStatus(HttpStatus.OK)
     public List<Task> getAllByEmployeeId(@PathVariable Long employeeId,
                                          @RequestParam(defaultValue = "0") int page,

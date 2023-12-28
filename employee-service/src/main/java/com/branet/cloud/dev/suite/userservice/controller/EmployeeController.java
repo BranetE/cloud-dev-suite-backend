@@ -5,6 +5,7 @@ import com.branet.cloud.dev.suite.userservice.model.Employee;
 import com.branet.cloud.dev.suite.userservice.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,18 +35,26 @@ public class EmployeeController {
         return employeeService.createEmployee(createEmployeeRequest);
     }
 
+    @GetMapping("/getByPositionAndOrExperience")
+    @PreAuthorize("hasAnyAuthority('TEAM_LEAD', 'MANAGER')")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Employee> getByPositionAndOrExperience(@RequestParam(required = false) String position, @RequestParam(required = false) String experience){
+        return employeeService.getByPositionAndExperience(position, experience);
+    }
+
     @GetMapping("/{employeeId}")
     @ResponseStatus(HttpStatus.OK)
     public Employee getEmployeeById(@PathVariable Long employeeId){
         return employeeService.getEmployee(employeeId);
     }
-    @PatchMapping("/{employeeId}/addProject")
+
+    @PutMapping("/{employeeId}/addProject")
     @ResponseStatus(HttpStatus.OK)
     public void addProjectToEmployee(@PathVariable Long employeeId, @RequestParam Long projectId){
         employeeService.addProjectToEmployee(employeeId, projectId);
     }
 
-    @PatchMapping("/{employeeId}/removeProject")
+    @PutMapping("/{employeeId}/removeProject")
     @ResponseStatus(HttpStatus.OK)
     public void removeProjectFromEmployee(@PathVariable Long employeeId, @RequestParam Long projectId) {
         employeeService.removeProjectFromEmployee(employeeId, projectId);

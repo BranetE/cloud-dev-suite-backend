@@ -32,7 +32,7 @@ public class AuthServiceImpl {
         UserDetailsImpl userDetails = employeeClient.getByEmail(loginRequest.email());
         Map<String, Object> extraClaims = new HashMap<>();
         extraClaims.put("id", userDetails.getId());
-        extraClaims.put("role",
+        extraClaims.put("position",
                 userDetails.getAuthorities().stream()
                         .findFirst()
                         .get()
