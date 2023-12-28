@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: auth-service
+  config:
+    import: "optional:configserver:http://localhost:8888"
+
+jwt:
+  secret: "CECF479371E92D21727A62A36B292"
+  expiration: 86400

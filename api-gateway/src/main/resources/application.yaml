@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: "optional:configserver:http://localhost:8888"
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/employee/**
+        - id: project-service
+          uri: lb://project-service
+          predicates:
+            - Path=/project/**
+        - id: shift-service
+          uri: lb://shift-service
+          predicates:
+            - Path=/shift/**
+        - id: sprint-service
+          uri: lb://sprint-service
+          predicates:
+            - Path=/sprint/**
