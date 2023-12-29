@@ -63,7 +63,7 @@ public class ProjectController {
         projectService.changeStatus(projectId, status);
     }
 
-    @PatchMapping("/changeTeamLead/{projectId}")
+    @PatchMapping("/changeResponsibleEmployee/{projectId}")
     @PreAuthorize("hasAuthority('MANAGER')")
     @ResponseStatus(HttpStatus.OK)
     public void changeTeamLead(@PathVariable Long projectId, @RequestParam("employeeId") Long responsibleEmployeeId){

@@ -14,9 +14,9 @@ import org.springframework.stereotype.Repository;
 public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query(value = "SELECT * FROM tasks AS t WHERE t.sprintId=:sprintId AND status='OPEN'",
             nativeQuery = true)
-    Page<Task> findAllOpenBySprintId(@Param("sprintId") Long sprintId, Pageable pageable);
+    Page<Task> findAllOpenBySprintId(@Param("sprintId") Long sprintId);
 
-    Page<Task> findAllByEmployeeId(Long employeeId, Pageable pageable);
+    Page<Task> findAllByEmployeeId(Long employeeId);
 
     @Modifying
     @Query(value = "UPDATE tasks AS s SET s.status=:status WHERE s.id=:taskId",

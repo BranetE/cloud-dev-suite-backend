@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/sprint")
 @RequiredArgsConstructor
@@ -15,11 +17,22 @@ public class SprintController {
 
     private final SprintService sprintService;
 
+    @PostMapping("/{sprintId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Sprint getSprint(@PathVariable Long sprintId){
+        return sprintService.getSprint(sprintId);
+    }
+
     @PostMapping("/start")
     @PreAuthorize("hasAuthority('TEAM_LEAD')")
     @ResponseStatus(HttpStatus.CREATED)
     public Sprint createSprint(@RequestBody CreateSprintRequest createSprintRequest){
         return sprintService.createSprint(createSprintRequest);
+    }
+    @GetMapping("/project/{projectId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Sprint> getAllSprintByProject(@PathVariable Long projectId){
+        return sprintService.getAllByProject(projectId);
     }
 
     @PutMapping("/finish/{sprintId}")

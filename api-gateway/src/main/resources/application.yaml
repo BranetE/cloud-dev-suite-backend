@@ -5,6 +5,13 @@ spring:
     import: "optional:configserver:http://localhost:8888"
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+        add-to-simple-url-handler-mapping: true
       routes:
         - id: auth-service
           uri: ${AUTH_ROUTE_URI:http://localhost:8040}

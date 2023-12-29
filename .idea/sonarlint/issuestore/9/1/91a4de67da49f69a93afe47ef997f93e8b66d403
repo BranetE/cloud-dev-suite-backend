@@ -3,3 +3,5 @@ k
 java:S1612,"IReplace this lambda with method reference 'EntityNotFoundException::new'.(£ç‚èýÿÿÿÿ8Ä›÷‘Ë1
 k
 java:S16122"IReplace this lambda with method reference 'EntityNotFoundException::new'.(£ç‚èýÿÿÿÿ8Ç›÷‘Ë1
+U
+java:S1128"8Remove this unused import 'jakarta.annotation.Nullable'.(âõ´Œ8¶²½—Ë1

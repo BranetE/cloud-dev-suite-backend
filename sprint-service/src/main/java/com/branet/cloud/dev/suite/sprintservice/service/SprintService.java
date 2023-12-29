@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Transactional
@@ -27,6 +28,10 @@ public class SprintService {
         return sprintRepository.save(sprint);
     }
 
+    public Sprint getSprint(Long sprintId){
+        return sprintRepository.findById(sprintId).orElseThrow(() -> new EntityNotFoundException())
+    }
+
     public Sprint finishSprint(Long sprintId) {
         Sprint sprint = sprintRepository.findById(sprintId).orElseThrow(() -> new EntityNotFoundException());
 
@@ -37,5 +42,9 @@ public class SprintService {
 
     public Sprint getCurrentSprint(Long projectId){
         return sprintRepository.findCurrentByProjectId(projectId).orElseThrow(() -> new EntityNotFoundException());
+    }
+
+    public List<Sprint> getAllByProject(Long projectId) {
+        return sprintRepository.findAllByProjectId(projectId);
     }
 }

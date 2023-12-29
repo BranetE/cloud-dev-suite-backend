@@ -19,11 +19,11 @@ public class EmployeeController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Employee> getAllByProjectId(){
+    public List<Employee> getAll(){
         return employeeService.getAll();
     }
 
-    @GetMapping("/project/{projectId}")
+    @GetMapping("/getAllByProject/{projectId}")
     @ResponseStatus(HttpStatus.OK)
     public List<Employee> getAllByProjectId(@PathVariable("projectId") Long projectId){
         return employeeService.getAllByProjectId(projectId);

@@ -169,3 +169,11 @@ cshift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/repository/
 \shift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/dto/AddShiftRequest.java,d\4\d46f17a08c91de359473bad60701fe3ccb97e2c3
 ê
 `project-service/src/main/java/com/branet/cloud/dev/suite/projectservice/model/ProjectStatus.java,d\d\dd8755d417933cccaa479e91b707f268bc855066
+í
+bsprint-service/src/main/java/com/branet/cloud/dev/suite/sprintservice/dto/CreateSprintRequest.java,5\6\5698d2c095725b32cde3fbe9eb29825fe871e8be
+ê
+`sprint-service/src/main/java/com/branet/cloud/dev/suite/sprintservice/dto/CreateTaskRequest.java,8\1\81a53d014ee42f79418a8f6e7ec1b0a4361aee19
+î
+dsprint-service/src/main/java/com/branet/cloud/dev/suite/sprintservice/repository/TaskRepository.java,1\3\13c92b8f858ac30ad4048e3ffd453d74f918ea0a
+ñ
+fsprint-service/src/main/java/com/branet/cloud/dev/suite/sprintservice/repository/SprintRepository.java,9\3\93c21acecea9bbcf76fe7676d149ee9b24de2b86

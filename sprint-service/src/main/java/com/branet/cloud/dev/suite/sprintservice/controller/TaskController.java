@@ -17,7 +17,7 @@ import java.util.List;
 public class TaskController {
     private final TaskService taskService;
 
-    @PostMapping("/getBySprint/{sprintId}")
+    @PostMapping("/create")
     @PreAuthorize("hasAuthority('TEAM_LEAD')")
     @ResponseStatus(HttpStatus.CREATED)
     public Task createTask(@RequestBody CreateTaskRequest createTaskRequest, @PathVariable Long sprintId) {
@@ -45,18 +45,14 @@ public class TaskController {
 
     @GetMapping("/getBySprint/{sprintId}/open")
     @ResponseStatus(HttpStatus.OK)
-    public List<Task> getAllOpenTasksBySprintId(@PathVariable Long sprintId,
-                                                @RequestParam(defaultValue = "0") int page,
-                                                @RequestParam(defaultValue = "5") int size) {
-        return taskService.getOpenTasksBySprint(sprintId, page, size);
+    public List<Task> getAllOpenTasksBySprintId(@PathVariable Long sprintId) {
+        return taskService.getOpenTasksBySprint(sprintId);
     }
 
     @GetMapping("/getByEmployee/{employeeId}")
     @PreAuthorize("hasAuthority('TEAM_LEAD') or authentication.principal.id == #employeeId")
     @ResponseStatus(HttpStatus.OK)
-    public List<Task> getAllByEmployeeId(@PathVariable Long employeeId,
-                                         @RequestParam(defaultValue = "0") int page,
-                                         @RequestParam(defaultValue = "5") int size) {
-        return taskService.getAllTasksByEmployee(employeeId, page, size);
+    public List<Task> getAllByEmployeeId(@PathVariable Long employeeId) {
+        return taskService.getAllTasksByEmployee(employeeId);
     }
 }

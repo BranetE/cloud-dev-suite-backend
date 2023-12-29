@@ -68,16 +68,14 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public List<Task> getOpenTasksBySprint(Long sprintId, int page, int size){
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Task> tasks = taskRepository.findAllOpenBySprintId(sprintId, pageable);
+    public List<Task> getOpenTasksBySprint(Long sprintId){
+        Page<Task> tasks = taskRepository.findAllOpenBySprintId(sprintId);
 
         return tasks.getContent();
     }
 
-    public List<Task> getAllTasksByEmployee(Long employeeId, int page, int size){
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Task> tasks = taskRepository.findAllByEmployeeId(employeeId, pageable);
+    public List<Task> getAllTasksByEmployee(Long employeeId){
+        Page<Task> tasks = taskRepository.findAllByEmployeeId(employeeId);
 
         return tasks.getContent();
     }
