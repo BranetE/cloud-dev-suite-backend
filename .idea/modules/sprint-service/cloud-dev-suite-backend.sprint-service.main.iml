@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$/../../../sprint-service/build/generated/sources/annotationProcessor/java/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../sprint-service/build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
+    </content>
+  </component>
   <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="0ff3d534-b49d-46fe-8d33-708ecc9ce5a2" />
+    <option name="uniqueId" value="6a7c030a-5cab-45a2-aa95-9fa80a4cffec" />
   </component>
 </module>
