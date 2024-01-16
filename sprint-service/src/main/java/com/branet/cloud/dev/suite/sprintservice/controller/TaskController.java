@@ -55,4 +55,11 @@ public class TaskController {
     public List<Task> getAllByEmployeeId(@PathVariable Long employeeId) {
         return taskService.getAllTasksByEmployee(employeeId);
     }
+
+    @GetMapping("/getByShift/{shiftId}")
+    @PreAuthorize("hasAuthority('DEVELOPER') or hasAuthority('DESIGNER')")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Task> getAllByShiftId(@PathVariable Long shiftId){
+        return taskService.getAllTasksByShiftId(shiftId);
+    }
 }

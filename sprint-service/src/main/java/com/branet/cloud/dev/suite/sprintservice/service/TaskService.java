@@ -69,14 +69,14 @@ public class TaskService {
     }
 
     public List<Task> getOpenTasksBySprint(Long sprintId){
-        Page<Task> tasks = taskRepository.findAllOpenBySprintId(sprintId);
-
-        return tasks.getContent();
+        return taskRepository.findAllOpenBySprintId(sprintId);
     }
 
     public List<Task> getAllTasksByEmployee(Long employeeId){
-        Page<Task> tasks = taskRepository.findAllByEmployeeId(employeeId);
+        return taskRepository.findAllByEmployeeId(employeeId);
+    }
 
-        return tasks.getContent();
+    public List<Task> getAllTasksByShiftId(Long shiftId){
+        return taskRepository.findAllByShiftId(shiftId);
     }
 }

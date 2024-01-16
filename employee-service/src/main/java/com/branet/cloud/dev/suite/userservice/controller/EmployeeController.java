@@ -36,7 +36,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/getByPositionAndOrExperience")
-    @PreAuthorize("hasAnyAuthority('TEAM_LEAD', 'MANAGER')")
+//    @PreAuthorize("hasAnyAuthority('TEAM_LEAD', 'MANAGER')")
     @ResponseStatus(HttpStatus.OK)
     public List<Employee> getByPositionAndOrExperience(@RequestParam(required = false) String position, @RequestParam(required = false) String experience){
         return employeeService.getByPositionAndExperience(position, experience);

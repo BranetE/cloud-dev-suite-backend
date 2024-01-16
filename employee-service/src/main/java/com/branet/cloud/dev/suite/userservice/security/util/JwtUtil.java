@@ -14,11 +14,11 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private final String secret;
+    private final String secret = "6a627a7fb025e2c5db643267523a1c801c1178bed30331a2606fe93f4dd9aa7b";
 
-    public JwtUtil(@Value("${jwt.secret}") String secret) {
-        this.secret = secret;
-    }
+//    public JwtUtil(@Value("${jwt.secret}") String secret) {
+//        this.secret = secret;
+//    }
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser()

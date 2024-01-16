@@ -29,7 +29,7 @@ public class SprintService {
     }
 
     public Sprint getSprint(Long sprintId){
-        return sprintRepository.findById(sprintId).orElseThrow(() -> new EntityNotFoundException())
+        return sprintRepository.findById(sprintId).orElseThrow(() -> new EntityNotFoundException());
     }
 
     public Sprint finishSprint(Long sprintId) {

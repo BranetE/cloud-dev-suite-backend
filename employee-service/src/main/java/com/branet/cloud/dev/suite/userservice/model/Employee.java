@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -30,7 +31,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Position position;
     @ElementCollection
-    private Set<Long> projects;
+    private Set<Long> projects = new HashSet<>();
 
     public void addProject(Long projectId){
         projects.add(projectId);
