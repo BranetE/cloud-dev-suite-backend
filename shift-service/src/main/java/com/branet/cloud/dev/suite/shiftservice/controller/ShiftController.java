@@ -18,6 +18,12 @@ import java.util.List;
 public class ShiftController {
     private final ShiftService shiftService;
 
+    @GetMapping("/{shiftId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Shift getShift(@PathVariable Long shiftId){
+        return shiftService.getShift(shiftId);
+    }
+
     @GetMapping("/getCurrent")
     @ResponseStatus(HttpStatus.OK)
     public Shift getCurrentShiftForEmployee(@AuthenticationPrincipal UserDetailsImpl employee){

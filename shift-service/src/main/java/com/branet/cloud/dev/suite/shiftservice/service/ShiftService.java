@@ -41,6 +41,10 @@ public class ShiftService {
         return shiftRepository.findCurrentShift(employeeId).orElseThrow(() -> new EntityNotFoundException());
     }
 
+    public Shift getShift(Long shiftId){
+        return shiftRepository.findById(shiftId).orElseThrow(() -> new EntityNotFoundException());
+    }
+
     public void finishCurrentShift(Long employeeId) {
         Shift currentShift = shiftRepository.findCurrentShift(employeeId).orElseThrow(() -> new EntityNotFoundException());
         shiftRepository.setEndTime(LocalDateTime.now(), currentShift.getId());
@@ -49,12 +53,6 @@ public class ShiftService {
     public Shift addTaskToCurrentShift(Long employeeId, Long taskId){
         Shift currentShift = shiftRepository.findCurrentShift(employeeId).orElseThrow(() -> new EntityNotFoundException());
         currentShift.addTask(taskId);
-        return shiftRepository.save(currentShift);
-    }
-
-    public Shift removeTaskFromCurrentShift(Long employeeId, Long taskId){
-        Shift currentShift = shiftRepository.findCurrentShift(employeeId).orElseThrow(() -> new EntityNotFoundException());
-        currentShift.removeTask(taskId);
         return shiftRepository.save(currentShift);
     }
 

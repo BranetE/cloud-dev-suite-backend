@@ -183,3 +183,5 @@ femployee-service/src/test/java/com/branet/cloud/dev/suite/userservice/service/E
 lemployee-service/src/test/java/com/branet/cloud/dev/suite/userservice/controller/EmployeeControllerTest.java,2\8\2874f465adb2b8ffc4ad864f5290e745e203e3ff
 ‡
 Wsprint-service/src/main/java/com/branet/cloud/dev/suite/sprintservice/model/Sprint.java,0\d\0da503f7a2c05bb51f6438cd48dfbe526c7545e7
+ˆ
+Xshift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/model/ShiftType.java,e\8\e8d79e32827b132cd210baa3b3ca56e332dacf76
