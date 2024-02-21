@@ -4,7 +4,6 @@ import com.branet.cloud.dev.suite.userservice.dto.CreateEmployeeRequest;
 import com.branet.cloud.dev.suite.userservice.dto.mapper.EmployeeMapper;
 import com.branet.cloud.dev.suite.userservice.model.Employee;
 import com.branet.cloud.dev.suite.userservice.repository.EmployeeRepository;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

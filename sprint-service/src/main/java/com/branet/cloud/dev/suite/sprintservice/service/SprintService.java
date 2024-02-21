@@ -24,6 +24,7 @@ public class SprintService {
         sprint.setTitle(createSprintRequest.title());
         sprint.setProjectId(createSprintRequest.projectId());
         sprint.setStartDate(LocalDate.now());
+        sprint.setFinishDate(LocalDate.parse(createSprintRequest.finishDate()));
 
         return sprintRepository.save(sprint);
     }

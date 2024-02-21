@@ -22,10 +22,11 @@ public class ProjectService {
 
     public Project createProject(CreateProjectRequest createProjectRequest){
         Project project = new Project();
-        project.setTitle(createProjectRequest.title());
-        project.setDescription(createProjectRequest.description());
-        project.setStatus(ProjectStatus.DEVELOPMENT);
-        project.setResponsibleEmployeeId(createProjectRequest.responsibleEmployeeId());
+        project.setTitle(createProjectRequest.getTitle());
+        project.setStatus(ProjectStatus.valueOf(createProjectRequest.getStatus()));
+        project.setDescription(createProjectRequest.getDescription());
+//        project.setStatus(ProjectStatus.DEVELOPMENT);
+        project.setResponsibleEmployeeId(createProjectRequest.getTeamLeadId());
         project.setStartDate(LocalDate.now());
 
         return projectRepository.save(project);
