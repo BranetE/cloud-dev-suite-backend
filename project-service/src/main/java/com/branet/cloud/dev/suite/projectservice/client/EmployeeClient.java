@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "employee-service", url = "http://localhost:8060")
+@FeignClient(name = "employee-service", url = "http://localhost:8050")
 public interface EmployeeClient {
     @PutMapping("/employee/{employeeId}/addProject")
     void addProjectToEmployee(@PathVariable Long employeeId, @RequestParam Long projectId);

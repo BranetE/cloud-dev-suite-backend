@@ -17,8 +17,8 @@ public class SprintController {
 
     private final SprintService sprintService;
 
-    @PostMapping("/{sprintId}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/{sprintId}")
+    @ResponseStatus(HttpStatus.OK)
     public Sprint getSprint(@PathVariable Long sprintId){
         return sprintService.getSprint(sprintId);
     }

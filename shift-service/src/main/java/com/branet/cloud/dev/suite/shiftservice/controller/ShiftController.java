@@ -26,8 +26,8 @@ public class ShiftController {
 
     @GetMapping("/getCurrent")
     @ResponseStatus(HttpStatus.OK)
-    public Shift getCurrentShiftForEmployee(@AuthenticationPrincipal UserDetailsImpl employee){
-        return shiftService.getCurrentShiftByEmployeeId(employee.getId());
+    public Shift getCurrentShiftForEmployee(@RequestParam("employeeId") Long employeeid){
+        return shiftService.getCurrentShiftByEmployeeId(employeeid);
     }
 
     @GetMapping("/getAllByEmployee/{employeeId}")
@@ -43,18 +43,18 @@ public class ShiftController {
         return shiftService.createNewShiftForEmployee(addShiftRequest, employee.getId());
     }
 
-    @PatchMapping("/end/{employeeId}")
+    @PutMapping("/end/{employeeId}")
     @PreAuthorize("authentication.principal.id == #employeeId or hasAuthority('TEAM_LEAD')")
     @ResponseStatus(HttpStatus.OK)
     public void endShiftForEmployee(@PathVariable("employeeId") Long employeeId) {
         shiftService.finishCurrentShift(employeeId);
     }
 
-    @PatchMapping("/addTask")
-    @PreAuthorize("hasAuthority('DEVELOPER') or hasAuthority('DESIGNER')")
+    @PutMapping("/addTask")
+//    @PreAuthorize("hasAuthority('DEVELOPER') or hasAuthority('DESIGNER')")
     @ResponseStatus(HttpStatus.OK)
-    public Shift addTaskForCurrentShift(@RequestParam("taskId") Long taskId, @AuthenticationPrincipal UserDetailsImpl employee) {
-        return shiftService.addTaskToCurrentShift(employee.getId(), taskId);
+    public Shift addTaskForCurrentShift(@RequestParam("taskId") Long taskId, @RequestParam("employeeId") Long employeeId) {
+        return shiftService.addTaskToCurrentShift(employeeId, taskId);
     }
 
 //    @PatchMapping("/removeTask")

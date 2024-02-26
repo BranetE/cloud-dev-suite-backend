@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    @Query(value = "SELECT * FROM tasks AS t WHERE t.sprintId=:sprintId AND status='OPEN'",
+    @Query(value = "SELECT * FROM tasks AS t WHERE t.sprint_id=:sprintId AND status='OPEN'",
             nativeQuery = true)
     List<Task> findAllOpenBySprintId(@Param("sprintId") Long sprintId);
 

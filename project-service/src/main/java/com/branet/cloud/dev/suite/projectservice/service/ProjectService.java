@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -25,11 +26,13 @@ public class ProjectService {
         project.setTitle(createProjectRequest.getTitle());
         project.setStatus(ProjectStatus.valueOf(createProjectRequest.getStatus()));
         project.setDescription(createProjectRequest.getDescription());
-//        project.setStatus(ProjectStatus.DEVELOPMENT);
         project.setResponsibleEmployeeId(createProjectRequest.getTeamLeadId());
         project.setStartDate(LocalDate.now());
+        project.setEmployees(Set.of(createProjectRequest.getTeamLeadId()));
 
-        return projectRepository.save(project);
+        Project savedProject = projectRepository.save(project);
+        employeeClient.addProjectToEmployee(savedProject.getResponsibleEmployeeId(), savedProject.getId());
+        return savedProject;
     }
 
     public List<Project> getAll() {

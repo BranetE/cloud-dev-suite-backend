@@ -3,10 +3,12 @@ package com.branet.cloud.dev.suite.sprintservice.controller;
 import com.branet.cloud.dev.suite.sprintservice.dto.CreateTaskRequest;
 import com.branet.cloud.dev.suite.sprintservice.dto.FinishTaskRequest;
 import com.branet.cloud.dev.suite.sprintservice.model.Task;
+import com.branet.cloud.dev.suite.sprintservice.security.util.UserDetailsImpl;
 import com.branet.cloud.dev.suite.sprintservice.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +22,8 @@ public class TaskController {
     @PostMapping("/create")
     @PreAuthorize("hasAuthority('TEAM_LEAD')")
     @ResponseStatus(HttpStatus.CREATED)
-    public Task createTask(@RequestBody CreateTaskRequest createTaskRequest, @PathVariable Long sprintId) {
-        return taskService.createTask(createTaskRequest, sprintId);
+    public Task createTask(@RequestBody CreateTaskRequest createTaskRequest) {
+        return taskService.createTask(createTaskRequest);
     }
 
     @GetMapping("/{taskId}")
@@ -30,18 +32,19 @@ public class TaskController {
         return taskService.getTask(taskId);
     }
 
-    @PatchMapping("/{taskId}")
+    @PutMapping("/{taskId}")
+//    @PreAuthorize("authentication.principal.id == #userDetails.id")
     @ResponseStatus(HttpStatus.OK)
-    public void changeStatus(@PathVariable Long taskId, @RequestParam("status") String status, Long employeeId){
-        taskService.updateStatus(taskId, employeeId, status);
+    public void changeStatus(@PathVariable Long taskId, @RequestParam("status") String status, @AuthenticationPrincipal UserDetailsImpl userDetails){
+    taskService.updateStatus(taskId, userDetails.getId(), status);
     }
 
-    @PutMapping("/finishTask/{taskId}")
-    @PreAuthorize("hasAuthority('DEVELOPER') or hasAuthority('DESIGNER')")
-    @ResponseStatus(HttpStatus.OK)
-    public Task finishTask(@RequestBody FinishTaskRequest finishTaskRequest, @PathVariable Long taskId, Long employeeId) {
-        return taskService.finishTask(taskId, employeeId, finishTaskRequest);
-    }
+//    @PutMapping("/finishTask/{taskId}")
+//    @PreAuthorize("hasAuthority('DEVELOPER') or hasAuthority('DESIGNER')")
+//    @ResponseStatus(HttpStatus.OK)
+//    public Task finishTask(@RequestBody FinishTaskRequest finishTaskRequest, @PathVariable Long taskId, Long employeeId) {
+//        return taskService.finishTask(taskId, employeeId, finishTaskRequest);
+//    }
 
     @GetMapping("/getBySprint/{sprintId}/open")
     @ResponseStatus(HttpStatus.OK)

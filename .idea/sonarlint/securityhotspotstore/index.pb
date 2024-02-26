@@ -185,3 +185,15 @@ lemployee-service/src/test/java/com/branet/cloud/dev/suite/userservice/controlle
 Wsprint-service/src/main/java/com/branet/cloud/dev/suite/sprintservice/model/Sprint.java,0\d\0da503f7a2c05bb51f6438cd48dfbe526c7545e7
 à
 Xshift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/model/ShiftType.java,e\8\e8d79e32827b132cd210baa3b3ca56e332dacf76
+ô
+ishift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/exception/GlobalExceptionHandler.java,7\6\76ab7ad77004f679cba76793b4438e119ed6775a
+ê
+`shift-service/src/main/java/com/branet/cloud/dev/suite/shiftservice/exception/ErrorResponse.java,6\6\66169d3ae493cf50214e2f4b5e612bc399f2ecf9
+í
+bsprint-service/src/main/java/com/branet/cloud/dev/suite/sprintservice/exception/ErrorResponse.java,5\e\5e815716425e2cf73cfd2178072a0fc0e267bd00
+õ
+ksprint-service/src/main/java/com/branet/cloud/dev/suite/sprintservice/exception/GlobalExceptionHandler.java,e\e\ee07b874988d74b1d3b04c3ea9b97ffc4211e5ef
+î
+dproject-service/src/main/java/com/branet/cloud/dev/suite/projectservice/exception/ErrorResponse.java,c\4\c4c3e341beb592ee74f2abaf9abec50922b1fb3d
+ù
+mproject-service/src/main/java/com/branet/cloud/dev/suite/projectservice/exception/GlobalExceptionHandler.java,8\5\85f882fcb65f140d4618805e2239ef97eb20de50

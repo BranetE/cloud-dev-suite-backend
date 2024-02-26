@@ -3,9 +3,3 @@ spring:
     name: shift-service
   config:
     import: optional:configserver:http://localhost:8888
-
-logging:
-  level:
-    org:
-      springframework:
-        security=TRACE:

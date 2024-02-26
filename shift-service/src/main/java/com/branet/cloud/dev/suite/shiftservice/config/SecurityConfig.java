@@ -32,6 +32,7 @@ public class SecurityConfig {
                         request ->
                                 request
                                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                                        .requestMatchers("/shift/getCurrent", "/shift/addTask", "/shift/{shiftId}/removeTask").permitAll()
                                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

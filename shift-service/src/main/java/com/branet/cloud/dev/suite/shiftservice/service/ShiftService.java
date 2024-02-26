@@ -22,7 +22,7 @@ public class ShiftService {
 
     public Shift createNewShiftForEmployee(AddShiftRequest addShiftRequest, Long employeeId){
         if(shiftRepository.findCurrentShift(employeeId).isPresent()) {
-            throw new EntityExistsException();
+            throw new EntityExistsException("There is other opened shift for current employee");
         }
 
         Shift shift = new Shift();

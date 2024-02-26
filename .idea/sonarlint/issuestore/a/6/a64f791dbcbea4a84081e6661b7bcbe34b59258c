@@ -1,9 +1,7 @@
 
 k
-java:S1612 "IReplace this lambda with method reference 'EntityNotFoundException::new'.(’âÒÄüÿÿÿÿ8î¡£Ñ1
+java:S1612 "IReplace this lambda with method reference 'EntityNotFoundException::new'.(­—ıÿÿÿÿ8é×ä·İ1
 f
-java:S1612'"IReplace this lambda with method reference 'EntityNotFoundException::new'.(ÀÚÆš8î¡£Ñ1
+java:S1612'"IReplace this lambda with method reference 'EntityNotFoundException::new'.(ÀÚÆš8í×ä·İ1
 k
-java:S1612,"IReplace this lambda with method reference 'EntityNotFoundException::new'.(¿ö…èÿÿÿÿÿ8’î¡£Ñ1
-k
-java:S1612:"IReplace this lambda with method reference 'EntityNotFoundException::new'.(¿ö…èÿÿÿÿÿ8œî¡£Ñ1
+java:S1612,"IReplace this lambda with method reference 'EntityNotFoundException::new'.(¿ö…èÿÿÿÿÿ8ğ×ä·İ1

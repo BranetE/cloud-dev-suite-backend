@@ -13,7 +13,8 @@ import java.util.List;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
-    List<Project> findAllByEmployeesContains(Long employeeId);
+    @Query(value = "SELECT * FROM projects JOIN project_employees ON projects.id = project_employees.project_id WHERE project_employees.employees=:employeeId", nativeQuery = true)
+    List<Project> findAllByEmployeesContains(@Param("employeeId") Long employeeId);
     @Modifying
     @Query(value = "UPDATE projects SET status=:status WHERE id=:projectId",
             nativeQuery = true)
