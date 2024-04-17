@@ -30,6 +30,30 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
+      <module name="api-gateway" target="17" />
+      <module name="api-gateway.main" target="17" />
+      <module name="api-gateway.test" target="17" />
+      <module name="auth-service" target="21" />
+      <module name="auth-service.main" target="21" />
+      <module name="auth-service.test" target="21" />
+      <module name="config-server" target="21" />
+      <module name="config-server.main" target="21" />
+      <module name="config-server.test" target="21" />
+      <module name="employee-service" target="21" />
+      <module name="employee-service.main" target="21" />
+      <module name="employee-service.test" target="21" />
+      <module name="project-service" target="21" />
+      <module name="project-service.main" target="21" />
+      <module name="project-service.test" target="21" />
+      <module name="service-registry" target="17" />
+      <module name="service-registry.main" target="17" />
+      <module name="service-registry.test" target="17" />
+      <module name="shift-service" target="21" />
+      <module name="shift-service.main" target="21" />
+      <module name="shift-service.test" target="21" />
+      <module name="sprint-service" target="21" />
+      <module name="sprint-service.main" target="21" />
+      <module name="sprint-service.test" target="21" />
       <module name="user-service" target="17" />
       <module name="user-service.main" target="17" />
       <module name="user-service.test" target="17" />

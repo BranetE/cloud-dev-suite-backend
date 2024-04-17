@@ -13,29 +13,49 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+/** The type Security config. */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+  /**
+   * Password encoder password encoder.
+   *
+   * @return the password encoder
+   */
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+  /**
+   * Authentication manager authentication manager.
+   *
+   * @param authenticationConfiguration the authentication configuration
+   * @return the authentication manager
+   * @throws Exception the exception
+   */
+  @Bean
+  public AuthenticationManager authenticationManager(
+      AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    return authenticationConfiguration.getAuthenticationManager();
+  }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        return http
-                .csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(
-                        request -> request.anyRequest().permitAll()
-                )
-                .build();
-    }
+  /**
+   * Security filter chain security filter chain.
+   *
+   * @param http the http
+   * @return the security filter chain
+   * @throws Exception the exception
+   */
+  @Bean
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http.csrf(AbstractHttpConfigurer::disable)
+        .sessionManagement(
+            sessionManagement ->
+                sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authorizeHttpRequests(request -> request.anyRequest().permitAll())
+        .build();
+  }
 }

@@ -1,13 +1,6 @@
 
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(²ƒ­úÿÿÿÿ8Ó˜Ô§É1
-a	java:S112#"FDefine and throw a dedicated exception instead of using a generic one.(á®…58Ô˜Ô§É1
-b	java:S112'"FDefine and throw a dedicated exception instead of using a generic one.(“±­İ8çÙ§É1
-d
-java:S2094."BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8é˜Ô§É1
-o
-java:S1128"RRemove this unused import 'com.branet.cloud.dev.suite.apigateway.dto.EmployeeDto'.(§ã™ì8áñšïÛ1
-b
-java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8áñšïÛ1
-y
-java:S1128
-"WRemove this unused import 'org.springframework.web.reactive.function.client.WebClient'.(¬à•ıÿÿÿÿ8âñšïÛ1
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(²ƒ­úÿÿÿÿ8íØ Ëî1J$3c9e6e34-87b3-4f47-a1d2-b96d4e65e89e
+‡	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(á®…58îØ Ëî1J$d13893dd-f61e-4a46-bdc9-db290f9271b7
+ˆ	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(“±­İ8ïØ Ëî1J$9d3c7902-d7c2-40c2-bc57-d5d943f122f1
+…
+java:S2094)"BRemove this empty class, write its code or make it an "interface".(Çó‚–8˜Ù Ëî1J$2bd3f5dd-b720-4fd7-aa9c-64546eba9e52

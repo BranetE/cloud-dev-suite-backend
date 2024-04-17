@@ -1,5 +1,9 @@
 package com.branet.cloud.dev.suite.sprintservice.model;
 
+/** The enum Sprint status. */
 public enum SprintStatus {
-    OPEN, CLOSED
+  /** Open sprint status. */
+  OPEN,
+  /** Closed sprint status. */
+  CLOSED
 }

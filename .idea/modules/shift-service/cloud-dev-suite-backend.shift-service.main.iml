@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../shift-service/build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
     </content>
   </component>
-  <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="05cf58dd-6908-47f8-8195-9fa6340f33c1" />
+  <component name="CheckStyle-IDEA-Module" serialisationVersion="2">
+    <option name="activeLocationsIds" />
   </component>
 </module>

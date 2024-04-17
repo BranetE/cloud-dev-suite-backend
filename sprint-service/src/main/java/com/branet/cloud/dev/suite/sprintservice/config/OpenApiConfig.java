@@ -7,19 +7,27 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/** The type Open api config. */
 @Configuration
 public class OpenApiConfig {
-    @Bean
-    public OpenAPI customizeOpenAPI() {
-        final String securitySchemeName = "bearerAuth";
-        return new OpenAPI()
-                .addSecurityItem(new SecurityRequirement()
-                        .addList(securitySchemeName))
-                .components(new Components()
-                        .addSecuritySchemes(securitySchemeName, new SecurityScheme()
-                                .name(securitySchemeName)
-                                .type(SecurityScheme.Type.HTTP)
-                                .scheme("bearer")
-                                .bearerFormat("JWT")));
-    }
+  /**
+   * Customize open api open api.
+   *
+   * @return the open api
+   */
+  @Bean
+  public OpenAPI customizeOpenAPI() {
+    final String securitySchemeName = "bearerAuth";
+    return new OpenAPI()
+        .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
+        .components(
+            new Components()
+                .addSecuritySchemes(
+                    securitySchemeName,
+                    new SecurityScheme()
+                        .name(securitySchemeName)
+                        .type(SecurityScheme.Type.HTTP)
+                        .scheme("bearer")
+                        .bearerFormat("JWT")));
+  }
 }

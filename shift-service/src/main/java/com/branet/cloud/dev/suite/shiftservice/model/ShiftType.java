@@ -1,5 +1,9 @@
 package com.branet.cloud.dev.suite.shiftservice.model;
 
+/** The enum Shift type. */
 public enum ShiftType {
-    OFFICE, REMOTE
+  /** Office shift type. */
+  OFFICE,
+  /** Remote shift type. */
+  REMOTE
 }

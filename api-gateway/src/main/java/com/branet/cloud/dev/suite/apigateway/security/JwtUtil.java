@@ -4,41 +4,48 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import java.util.Date;
+import java.util.function.Function;
+import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.crypto.SecretKey;
-import java.util.Date;
-import java.util.function.Function;
-
+/** The type Jwt util. */
 @Component
 public class JwtUtil {
 
-    private final String secret;
+  private final String secret;
 
-    public JwtUtil(@Value("${jwt.secret}") String secret) {
-        this.secret = secret;
-    }
+  /**
+   * Instantiates a new Jwt util.
+   *
+   * @param secret the secret
+   */
+  public JwtUtil(@Value("${jwt.secret}") String secret) {
+    this.secret = secret;
+  }
 
-    private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                .verifyWith(getSigningKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
-    }
+  /**
+   * Is token expired boolean.
+   *
+   * @param token the token
+   * @return the boolean
+   */
+  public boolean isTokenExpired(String token) {
+    return extractClaim(token, Claims::getExpiration).before(new Date());
+  }
 
-    private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
-        Claims claims = extractAllClaims(token);
-        return claimResolver.apply(claims);
-    }
+  private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
+    Claims claims = extractAllClaims(token);
+    return claimResolver.apply(claims);
+  }
 
-    public boolean isTokenExpired(String token){
-        return extractClaim(token, Claims::getExpiration).before(new Date());
-    }
+  private Claims extractAllClaims(String token) {
+    return Jwts.parser().verifyWith(getSigningKey()).build().parseSignedClaims(token).getPayload();
+  }
 
-    private SecretKey getSigningKey(){
-        byte[] keyBytes = Decoders.BASE64.decode(secret);
-        return Keys.hmacShaKeyFor(keyBytes);
-    }
+  private SecretKey getSigningKey() {
+    byte[] keyBytes = Decoders.BASE64.decode(secret);
+    return Keys.hmacShaKeyFor(keyBytes);
+  }
 }

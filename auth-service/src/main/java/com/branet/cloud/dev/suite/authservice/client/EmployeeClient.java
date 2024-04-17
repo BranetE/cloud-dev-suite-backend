@@ -8,11 +8,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/** The interface Employee client. */
 @FeignClient(name = "employee-service", url = "http://localhost:8050")
 public interface EmployeeClient {
-    @GetMapping("/employee/getByEmail")
-    UserDetailsImpl getByEmail(@RequestParam("email") String email);
+  /**
+   * Gets by email.
+   *
+   * @param email the email
+   * @return the by email
+   */
+  @GetMapping("/employee/getByEmail")
+  UserDetailsImpl getByEmail(@RequestParam("email") String email);
 
-    @PostMapping("/employee")
-    void createEmployee(@RequestBody RegisterRequest registerRequest);
+  /**
+   * Create employee.
+   *
+   * @param registerRequest the register request
+   */
+  @PostMapping("/employee")
+  void createEmployee(@RequestBody RegisterRequest registerRequest);
 }

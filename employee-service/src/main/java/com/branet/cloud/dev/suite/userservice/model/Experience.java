@@ -1,5 +1,11 @@
 package com.branet.cloud.dev.suite.userservice.model;
 
+/** The enum Experience. */
 public enum Experience {
-    JUNIOR, MIDDLE, SENIOR
+  /** Junior experience. */
+  JUNIOR,
+  /** Middle experience. */
+  MIDDLE,
+  /** Senior experience. */
+  SENIOR
 }

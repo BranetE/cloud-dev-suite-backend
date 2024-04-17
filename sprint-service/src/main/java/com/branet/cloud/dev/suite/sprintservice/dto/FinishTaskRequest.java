@@ -1,5 +1,4 @@
 package com.branet.cloud.dev.suite.sprintservice.dto;
 
-public record FinishTaskRequest(
-        String comment
-) {}
+/** The type Finish task request. */
+public record FinishTaskRequest(String comment) {}
